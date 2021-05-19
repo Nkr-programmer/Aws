@@ -1,0 +1,21 @@
+{
+    "appName": "Nikhil",
+    "roleName": "pinpointLambdaRoleb1ab3b8d",
+    "cloudformationPolicyName": "cloudformationPolicyb1ab3b8d",
+    "cloudWatchPolicyName": "cloudWatchPolicyb1ab3b8d",
+    "pinpointPolicyName": "pinpointPolicyb1ab3b8d",
+    "authPolicyName": "pinpoint_amplify_b1ab3b8d",
+    "unauthPolicyName": "pinpoint_amplify_b1ab3b8d",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

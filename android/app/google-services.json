@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "708016233623",
+    "project_id": "tenvotive",
+    "storage_bucket": "tenvotive.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708016233623:android:ad7c0d54a0d1c8f3d19dd2",
+        "android_client_info": {
+          "package_name": "com.example.tenvotive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708016233623-0c0qrbst8nrdft505bc1udpr437n1sqt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tenvotive",
+            "certificate_hash": "7ec17ea100d5c281b22d11420f76e5e825815e56"
+          }
+        },
+        {
+          "client_id": "708016233623-nh4pbank3fi4idesm17nqckji4qb4n6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZpVoUie0Wmm4gqbobQx1aFVwhLhnBeoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708016233623-nh4pbank3fi4idesm17nqckji4qb4n6s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

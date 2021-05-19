@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tenvotive-dev-125326-authRole",
+      "UnauthRoleArn": "arn:aws:iam::423327847010:role/amplify-tenvotive-dev-125326-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::423327847010:role/amplify-tenvotive-dev-125326-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-tenvotive-dev-125326-deployment",
+      "UnauthRoleName": "amplify-tenvotive-dev-125326-unauthRole",
+      "StackName": "amplify-tenvotive-dev-125326",
+      "StackId": "arn:aws:cloudformation:us-east-1:423327847010:stack/amplify-tenvotive-dev-125326/9eb86600-b617-11eb-95bf-1201663355d3",
+      "AmplifyAppId": "d23vl1wu05k2i7"
+    },
+    "categories": {
+      "auth": {
+        "tenvotive75db0e32": {}
+      }
+    }
+  }
+}
