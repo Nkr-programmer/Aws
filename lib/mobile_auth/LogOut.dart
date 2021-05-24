@@ -44,10 +44,13 @@ class _LogoutState extends State<Logout> {
 
       ),
       body: Center(
-        child: Container(
+        child: Container(color: Colors.black87,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text("Welcome"),
+             Center(child: Text("Welcome",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+	                      ),
               SizedBox(
                 height: 10,
                 
@@ -59,12 +62,8 @@ class _LogoutState extends State<Logout> {
                   width: 3,
 
                 ),
-                child: Text("Log out", style: TextStyle(
-                  color: Colors.blue,),
-                  
-                  
-
-                ),
+                child: Text("Log out", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+	                      
                 onPressed: (){
 
                   _logout();

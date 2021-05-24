@@ -1,9 +1,12 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tenvotive/HomeScreen.dart';
+import 'package:provider/provider.dart';
 import 'package:tenvotive/LoginScreen.dart';
+import 'package:tenvotive/firebase_repository/HomeScreen.dart';
 import 'package:tenvotive/firebase_repository/repository.dart';
+import 'package:tenvotive/mobile_auth/providers/countries.dart';
+import 'package:tenvotive/mobile_auth/providers/phone_auth.dart';
 
 void main() => runApp(
   MaterialApp(
@@ -24,7 +27,15 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
       WidgetsFlutterBinding.ensureInitialized();
    // Firestore.instance.collection("users").document().setData({"name":"nkr_programmer"});
-    return  MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => CountryProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PhoneAuthDataProvider(),
+        ),
+      ],child: MaterialApp(
         title:"Chromser",
         debugShowCheckedModeBanner: false,
      
@@ -37,6 +48,6 @@ theme: ThemeData(brightness: Brightness.dark),
           {return HomePage();}
 // when current user is clicked if null then loginscreen else homescreen
         },)
-      );
+      ));
   }
 }

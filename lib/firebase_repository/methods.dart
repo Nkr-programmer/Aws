@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:tenvotive/user.dart';
+import 'package:tenvotive/firebase_repository/user.dart';
 
 class FirebaseMethods
 {

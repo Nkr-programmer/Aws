@@ -3,9 +3,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tenvotive/FadeAnimation.dart';
-import 'package:tenvotive/HomeScreen.dart';
+import 'package:tenvotive/firebase_repository/HomeScreen.dart';
 import 'package:tenvotive/firebase_repository/repository.dart';
-import 'package:tenvotive/mobile_auth/login_mobile.dart';
+import 'package:tenvotive/mobile_auth/firebase/auth/phone_auth/get_phone.dart';
 
 
 
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
 	                       FadeAnimation(2, GestureDetector(
                       onTap: () => Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => LoginPage()),
+          MaterialPageRoute(builder: (context) =>  PhoneAuthGetPhone(),),
           (Route<dynamic> route) => false,
         ),
                                           child:Stack(children:[ Container(
@@ -134,7 +134,6 @@ class _HomePageState extends State<HomePage> {
       ]),
 	                  )),
 	                  SizedBox(height: 70,),
-	                  FadeAnimation(1.5, Text("Forgot Password?", style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),)),
 	                ],
 	              ),
 	            )
