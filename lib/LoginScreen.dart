@@ -3,18 +3,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tenvotive/FadeAnimation.dart';
+import 'package:tenvotive/database/profile.dart';
 import 'package:tenvotive/firebase_repository/HomeScreen.dart';
 import 'package:tenvotive/firebase_repository/repository.dart';
 import 'package:tenvotive/mobile_auth/firebase/auth/phone_auth/get_phone.dart';
 
 
 
-class HomePage extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _LoginScreenState extends State<LoginScreen> {
  FirebaseRepository _repository = FirebaseRepository();
  bool isLoginPressed = false;  
   @override
@@ -168,7 +169,7 @@ _repository.authenticateUser(user).then((isNewUser) {
   });
   if(isNewUser){
     _repository.addDataToDb(user).then((value){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-  return Normal();
+  return Profile();
   },));});
   }
   else{

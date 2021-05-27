@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tenvotive/LoginScreen.dart';
-import 'package:tenvotive/mobile_auth/login_mobile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Logout extends StatefulWidget {
@@ -28,7 +27,7 @@ class _LogoutState extends State<Logout> {
     try{
       await FirebaseAuth.instance.signOut();
       Navigator.push(context, 
-      MaterialPageRoute(builder: (context)=> HomePage()),);
+      MaterialPageRoute(builder: (context)=> LoginScreen()),);
     } catch(e){
       print(e.toString());
     }

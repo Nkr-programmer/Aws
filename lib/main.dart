@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tenvotive/LoginScreen.dart';
+import 'package:tenvotive/database/profile.dart';
 import 'package:tenvotive/firebase_repository/HomeScreen.dart';
 import 'package:tenvotive/firebase_repository/repository.dart';
 import 'package:tenvotive/mobile_auth/providers/countries.dart';
@@ -43,9 +44,15 @@ theme: ThemeData(brightness: Brightness.dark),
         home: FutureBuilder(future:  _repository.getCurrentUser(), 
         builder:(context, AsyncSnapshot<FirebaseUser> snapshot) {  
           if(snapshot.hasData)
-          {return Normal();}
+          {
+            return Normal();
+        //  return Profile();  
+          }
           else
-          {return HomePage();}
+          {
+            return LoginScreen();
+       //   return Profile();  
+          }
 // when current user is clicked if null then loginscreen else homescreen
         },)
       ));

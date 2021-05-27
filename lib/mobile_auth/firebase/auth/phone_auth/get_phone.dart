@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tenvotive/database/grepository.dart';
+import 'package:tenvotive/database/profile.dart';
+import 'package:tenvotive/firebase_repository/HomeScreen.dart';
 import 'package:tenvotive/mobile_auth/LogOut.dart';
 import 'package:tenvotive/mobile_auth/firebase/auth/phone_auth/select_country.dart';
 import 'package:tenvotive/mobile_auth/firebase/auth/phone_auth/verify.dart';
@@ -23,6 +26,7 @@ class PhoneAuthGetPhone extends StatefulWidget {
 }
 
 class _PhoneAuthGetPhoneState extends State<PhoneAuthGetPhone> {
+   GFirebaseRepository _repository = GFirebaseRepository();
   double _height, _width, _fixedPadding;
   @override
   void initState() {
@@ -148,14 +152,34 @@ GestureDetector(
   
     await FirebaseAuth.instance.signInWithCredential(
       credential).then((user) {
-      Navigator.push(context, MaterialPageRoute(
-        builder: (context) => Logout(),),
-      );
+    authenticateUser();
+
    }).catchError((e){
      print(e);
    });
   }
+  void authenticateUser()
+{
 
+FirebaseAuth.instance.currentUser().then((user){
+                if(user != null){
+
+_repository.authenticateUser(user).then((isNewUser) {
+  if(isNewUser){
+   
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+  return Profile();
+  },));
+  }
+  else{
+     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+  return Normal();
+  },));
+  }
+});
+
+}});
+}
 
   final scaffoldKey = GlobalKey<ScaffoldState>(
       debugLabel: "scaffold-get-phone");

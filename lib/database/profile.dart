@@ -1,59 +1,65 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:tenvotive/LoginScreen.dart';
 import 'package:tenvotive/database/grepository.dart';
 import 'package:tenvotive/database/guser.dart';
-import 'package:tenvotive/firebase_repository/methods.dart';
+import 'package:tenvotive/firebase_repository/HomeScreen.dart';
 
-class Normal extends StatefulWidget {
+class Profile extends StatefulWidget {
   @override
-  _NormalState createState() => _NormalState();
+  _ProfileState createState() => _ProfileState();
 }
 
-class _NormalState extends State<Normal> {
-       GFirebaseRepository _repository = GFirebaseRepository();
-     final FirebaseMethods authMethods = FirebaseMethods();
-     String r="";
-     String c="";
-     String g="";
-     List<GUser> x;
-
-@override
-   void  initState(){
-      super.initState();
-      print("kbfvnfkknfdvkk");
-                       _repository.fetch().then((value){
-
-x=value;
-print(value.length);
-c=x[0].covid;
-r=x[0].recovered;
-g=x[0].gender;
-setState(() {
-  
-});
-                       });
-    }
+class _ProfileState extends State<Profile> {
   @override
+   GFirebaseRepository _repository = GFirebaseRepository();
+  TextEditingController name = TextEditingController();
+  TextEditingController address = TextEditingController();
+  TextEditingController age = TextEditingController(); 
+  TextEditingController bg = TextEditingController(); 
+  TextEditingController email = TextEditingController(); 
+  int c=0;
+  int r=0;
+  int g=0;
+  // nameoflib(BuildContext context) {
+  //   return Container(
+  //     height: 80,
+  //     margin: const EdgeInsets.symmetric(
+  //       horizontal: 10,
+  //     ),
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.all(Radius.circular(20.0)),
+  //       gradient: LinearGradient(
+  //         colors: [Colors.lightGreenAccent, Colors.green],
+  //       ),
+  //     ),
+  //     child: TextField(
+  //       controller: searchController,
+  //       onSubmitted: (val) {
+  //         setState(() {
+  //           query = val;
+  //         });
+  //       },
+  //       style: TextStyle(
+  //         fontWeight: FontWeight.bold,
+  //         color: Colors.black87,
+  //         fontSize: 35,
+  //       ),
+  //       decoration: InputDecoration(
+         
+  //           border: InputBorder.none,
+  //           hintText: "   Name",
+  //           hintStyle: TextStyle(
+  //             fontWeight: FontWeight.bold,
+  //             color: Colors.black87,
+  //             fontSize: 35,
+  //           )),
+  //     ),
+  //   );
+  // }
   Widget build(BuildContext context) {
-
-
-    signOut() async {
-      final bool isLoggedOut = await FirebaseMethods().signOut();
-      if (isLoggedOut) {
-
-        // move the user to login screen
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => LoginScreen()),
-          (Route<dynamic> route) => false,
-        );
-      }
-    }
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-      	child: c==""?Center(  child: Container( margin:EdgeInsets.symmetric(vertical: 500) ,  child: CircularProgressIndicator(),)):Container(
+      	child: Container(
 	        child: Column(
 	          children: <Widget>[
 	           
@@ -63,29 +69,50 @@ setState(() {
 	                children: <Widget>[
                      Text("COVID PROFILE", style: TextStyle(  fontWeight: FontWeight.bold, color: Colors.black87,  fontSize: 40,),),
        SizedBox(height: 30),
-	       Container(height: 50,width: 600,margin: const EdgeInsets.symmetric(horizontal: 10),
+	       Container(height: 50,margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.0)),
         gradient: LinearGradient(colors: [Colors.orange, Colors.orangeAccent],),
       ), 
-          child:   Text("  "+x[0].name, style: TextStyle( fontWeight: FontWeight.bold, color: Colors.black87,fontSize: 20,)),),
+          child:   TextField(
+        controller: name,
+        onChanged:(val)=> print(name.text),
+        style: TextStyle(  fontWeight: FontWeight.bold, color: Colors.black87,  fontSize: 20,),
+        decoration: InputDecoration(         
+            border: InputBorder.none,
+            hintText: "   Name",     hintStyle: TextStyle( fontWeight: FontWeight.bold, color: Colors.black87,fontSize: 20,)),
+      ),),
 
 
 	                  SizedBox(height: 30,),
 
 
-          Container(height: 50,width: 600,margin: const EdgeInsets.symmetric(horizontal: 10),
+          Container(height: 50,margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.0)),
         gradient: LinearGradient(colors: [Colors.orange, Colors.orangeAccent],),
-      ),child:             Text("  "+x[0].age, style: TextStyle( fontWeight: FontWeight.bold, color: Colors.black87,fontSize: 20,)),),
+      ),child:            TextField(
+        controller: age,
+        onChanged:(val)=> print(age.text),
+        style: TextStyle(  fontWeight: FontWeight.bold, color: Colors.black87,  fontSize: 20,),
+        decoration: InputDecoration(         
+            border: InputBorder.none,
+            hintText: "   Age",     hintStyle: TextStyle( fontWeight: FontWeight.bold, color: Colors.black87,fontSize: 20,)),
+      ),),
 
 
 	                  SizedBox(height: 30,),
 
- Container(height: 50,width: 600,margin: const EdgeInsets.symmetric(horizontal: 10),
+ Container(height: 50,margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.0)),
         gradient: LinearGradient(colors: [Colors.orange, Colors.orangeAccent],),
       ),
- child:  Text("  "+x[0].address,style: TextStyle( fontWeight: FontWeight.bold, color: Colors.black87,fontSize: 20,)),),
+ child:TextField(
+        controller: address,
+        onChanged:(val)=> print(address.text),
+        style: TextStyle(  fontWeight: FontWeight.bold, color: Colors.black87,  fontSize: 20,),
+        decoration: InputDecoration(         
+            border: InputBorder.none,
+            hintText: "   Address",     hintStyle: TextStyle( fontWeight: FontWeight.bold, color: Colors.black87,fontSize: 20,)),
+      ),),
 	                  SizedBox(height: 30,),
 	     Row(
 	       children: [
@@ -105,24 +132,29 @@ setState(() {
 	                              children: [
 	                                Padding(
 	                                  padding: const EdgeInsets.only(left:5.0,top:5.0),
-	                                  child: GestureDetector(
+	                                  child: GestureDetector(onTap: (){setState(() {
+	                                c=1;
+                                  r=0;
+	                              });},
                                                                           child: Container(
 	                      height: 30,width:30,
 	                      decoration: BoxDecoration(
 	                        borderRadius: BorderRadius.circular(60),
-	                       color:c=="0"?Colors.grey:c=="1"?Colors.white:Colors.black,
+	                       color:c==0?Colors.grey:c==1?Colors.white:Colors.black,
 	                      ),
                         ),
 	                                  ),
 	                                ),
                                   Padding(
 	                              padding: const EdgeInsets.only(left:20.0,right:5.0,top:5.0),
-	                              child: GestureDetector(
+	                              child: GestureDetector(onTap: (){setState(() {
+	                                c=2;
+	                              });},
                                                                   child: Container(
 	                      height: 30,width:30,
 	                      decoration: BoxDecoration(
 	                        borderRadius: BorderRadius.circular(60),
-	                       color:c=="0"?Colors.grey:c=="1"?Colors.black:Colors.white,
+	                       color:c==0?Colors.grey:c==1?Colors.black:Colors.white,
 	                      ),
                         ),
 	                              ),
@@ -153,24 +185,30 @@ setState(() {
 	                              children: [
 	                                Padding(
 	                                  padding: const EdgeInsets.only(left:5.0,top:5.0),
-	                                  child: GestureDetector(
+	                                  child: GestureDetector(onTap: (){setState(() {
+	                                if(c==2){r=1;}
+                                  else {r=0;}
+	                              });},
                                                                           child: Container(
 	                      height: 30,width:30,
 	                      decoration: BoxDecoration(
 	                        borderRadius: BorderRadius.circular(60),
-	                  color:r=="0"?Colors.grey:r=="1"?Colors.white:Colors.black,
+	                  color:r==0?Colors.grey:r==1?Colors.white:Colors.black,
 	                      ),
                         ),
 	                                  ),
 	                                ),
                                   Padding(
 	                              padding: const EdgeInsets.only(left:20.0,right:5.0,top:5.0),
-	                              child: GestureDetector(
+	                              child: GestureDetector(onTap: (){setState(() {
+	                                if(c==2){r=2;}
+                                  else {r=0;}
+	                              });},
                                                                   child: Container(
 	                      height: 30,width:30,
 	                      decoration: BoxDecoration(
 	                        borderRadius: BorderRadius.circular(60),
-	                      color:r=="0"?Colors.grey:r=="1"?Colors.black:Colors.white,
+	                      color:r==0?Colors.grey:r==1?Colors.black:Colors.white,
 	                      ),
                         ),
 	                              ),
@@ -184,12 +222,18 @@ setState(() {
 	     ),
                          SizedBox(height: 30,),
 
- Container(height: 50,width: 600,margin: const EdgeInsets.symmetric(horizontal: 10),
+ Container(height: 50,margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.0)),
         gradient: LinearGradient(colors: [Colors.orange, Colors.orangeAccent],),
       ),
- child: Text("  "+x[0].blood, style: TextStyle( fontWeight: FontWeight.bold, color: Colors.black87,fontSize: 20,)),),
-	     
+ child:TextField(
+        controller: bg,
+        onChanged:(val)=> print(bg.text),
+        style: TextStyle(  fontWeight: FontWeight.bold, color: Colors.black87,  fontSize: 20,),
+        decoration: InputDecoration(         
+            border: InputBorder.none,
+            hintText: "   Blood Group",     hintStyle: TextStyle( fontWeight: FontWeight.bold, color: Colors.black87,fontSize: 20,)),
+      ),),
 	                  SizedBox(height: 30,),
 
  Text("Gender", style: TextStyle(  fontWeight: FontWeight.bold, color: Colors.black87,  fontSize: 20,),),
@@ -202,11 +246,14 @@ Row(
 	        
 	               Padding(
 	                              padding: const EdgeInsets.only(left:5.0,right:5.0),
-	                              child: GestureDetector(                            child: Container(
+	                              child: GestureDetector(onTap: (){setState(() {
+	                                g=1;
+	                              });},
+                                                                  child: Container(
 	                      height: 30,width:30,
 	                      decoration: BoxDecoration(
 	                        borderRadius: BorderRadius.circular(60),
-	                      color:g=="1"?Colors.blueAccent:Colors.black,
+	                      color:g==1?Colors.blueAccent:Colors.black,
 	                      ),
                         ),
 	                              ),
@@ -215,11 +262,14 @@ Row(
    
                                Padding(
 	                              padding: const EdgeInsets.only(left:20.0,right:5.0),
-	                              child: GestureDetector(                      child: Container(
+	                              child: GestureDetector(onTap: (){setState(() {
+	                                g=2;
+	                              });},
+                                                                  child: Container(
 	                      height: 30,width:30,
 	                      decoration: BoxDecoration(
 	                        borderRadius: BorderRadius.circular(60),
-	                       color:g=="2"?Colors.blueAccent:Colors.black,
+	                       color:g==2?Colors.blueAccent:Colors.black,
 	                      ),
                         ),
 	                              ),
@@ -229,11 +279,14 @@ Row(
        
                               Padding(
 	                              padding: const EdgeInsets.only(left:20.0,right:5.0),
-	                              child: GestureDetector(                           child: Container(
+	                              child: GestureDetector(onTap: (){setState(() {
+	                                g=3;
+	                              });},
+                                                                  child: Container(
 	                      height: 30,width:30,
 	                      decoration: BoxDecoration(
 	                        borderRadius: BorderRadius.circular(60),
-	                       color:g=="3"?Colors.blueAccent:Colors.black,
+	                       color:g==3?Colors.blueAccent:Colors.black,
 	                      ),
                         ),
 	                              ),
@@ -245,16 +298,37 @@ Row(
 
 
                SizedBox(height: 30,),
- Container(height: 50,width: 600,margin: const EdgeInsets.symmetric(horizontal: 10),
+ Container(height: 50,margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.0)),
         gradient: LinearGradient(colors: [Colors.orange, Colors.orangeAccent],),
       ),
- child: Text("  "+x[0].email, style: TextStyle( fontWeight: FontWeight.bold, color: Colors.black87,fontSize: 20,)),),
-	     
+ child:TextField(
+        controller: email,
+        onChanged:(val)=> print(email.text),
+        style: TextStyle(  fontWeight: FontWeight.bold, color: Colors.black87,  fontSize: 20,),
+        decoration: InputDecoration(         
+            border: InputBorder.none,
+            hintText: "   Email",     hintStyle: TextStyle( fontWeight: FontWeight.bold, color: Colors.black87,fontSize: 20,)),
+      ),),
 	                  SizedBox(height: 30,),
               
                    GestureDetector(
-                       onTap: () => signOut(),
+                      onTap: () {print(name.text+" "+age.text+" "+address.text);
+                         GUser user = GUser(
+        uid: "",
+        name: name.text,
+        age: age.text,
+        address: address.text,
+        covid:c.toString(),
+        recovered:r.toString(),
+        blood:bg.text,
+        gender:g.toString(),
+        email:email.text,
+        );
+                       _repository.addDataToDb(user).then((value){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+  return Normal();
+  },));});
+                      },
                                           child:Stack(children:[ Container(
 	                      height: 50,
 	                      decoration: BoxDecoration(
@@ -283,31 +357,4 @@ Row(
     );
   
   }
- 
-  }
-
-
-
-
-
-// Container(
-//       child: Column(
-//         children: [
-
-//  GestureDetector(onTap: () => {
-//                        _repository.fetch().then((value){
-// print(value.first.data.keys.elementAt(0).toString());
-// print(value.first.data.values.elementAt(0).toString());
-//                        }),
-//                       },child:Center(child:Container(
-//             color:Colors.white,
-//             child:Text("Print Out"),
-//           ))),
-
-//           GestureDetector(onTap: () => signOut(),child:Center(child:Container(
-//             color:Colors.white,
-//             child:Text("Sign Out"),
-//           ))),
-//         ],
-//       ),
-//     );
+}
