@@ -117,18 +117,43 @@ class _LoginScreenState extends State<LoginScreen> {
 	                  FadeAnimation(2, GestureDetector(
                       onTap: () => performLogin(),
                                           child:Stack(children:[ Container(
-	                      height: 50,
-	                      decoration: BoxDecoration(
-	                        borderRadius: BorderRadius.circular(10),
-	                        gradient: LinearGradient(
-	                          colors: [
-	                            Color.fromRGBO(143, 148, 251, 1),
-	                            Color.fromRGBO(143, 148, 251, .6),
-	                          ]
+                                             decoration:BoxDecoration(color: Colors.white,
+                    
+                  borderRadius: BorderRadius.circular(10),
+	                      boxShadow: [
+	                        BoxShadow(
+	                          color: Color.fromRGBO(143, 148, 251, .2),
+	                          blurRadius: 20.0,
+	                          offset: Offset(0, 10)
 	                        )
-	                      ),
-	                      child: Center(
-	                        child: Text("Google Sign In", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+	                      ]
+	                    ),
+	                     height:60,
+	                      child: Row(
+	                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(height:50,
+                            width:50,
+                                decoration:BoxDecoration(color: Colors.amber,
+                         image: DecorationImage(
+	                  image: AssetImage('assets/Google.png'),
+	                  fit: BoxFit.fill
+	                ),
+                  ),
+                              ),
+                          ),
+	                          Padding(padding: const EdgeInsets.only(left: 10),
+                      
+	                            child: Text(
+                        'Sign in with Google',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ), ),
+	                        ],
 	                      ),
 	                    ),
                       isLoginPressed?Center(child: CircularProgressIndicator(),):Container()
@@ -174,7 +199,7 @@ _repository.authenticateUser(user).then((isNewUser) {
   }
   else{
      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-  return Normal();
+  return HomePage();
   },));
   }
 });

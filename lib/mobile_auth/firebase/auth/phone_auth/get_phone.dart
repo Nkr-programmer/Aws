@@ -80,26 +80,28 @@ String smssent, verificationId;
         backgroundColor: Colors.white,
         title: Text('ENTER OTP',textAlign: TextAlign.center,style: TextStyle(color: Colors.black45,fontWeight: FontWeight.bold),),
         content: 
-      TextFormField(
-                onChanged: (value){
-              this.smssent = value;
-          },
-                autofocus: false,
-                keyboardType: TextInputType.phone,
-                key: Key('EnterPhone-TextFormField'),
-                decoration: InputDecoration(
+      Container(color:Colors.lightBlue,
+        child: TextField(
+                  onChanged: (value){
+                this.smssent = value;
+            },
+                  autofocus: false,
+                  keyboardType: TextInputType.phone,
+                  key: Key('EnterPhone-TextFormField'),
+                  decoration: InputDecoration(
+                  
+                     focusedBorder:OutlineInputBorder
+                 (borderSide: const BorderSide(color:Colors.black,width:2.0),
                 
-                   focusedBorder:OutlineInputBorder
-               (borderSide: const BorderSide(color:Colors.black,width:2.0),
-               borderRadius:BorderRadius.circular(15.0),
-                ),
-                 errorMaxLines: 1,
-                  labelText: "123456",
-                  fillColor: Colors.grey,
-                ),
+                  ),
+                   errorMaxLines: 1,
+                    labelText: "123456",
+                    fillColor: Colors.grey,
+                  ),
+                
               
-            
-          ),
+            ),
+      ),
         contentPadding: EdgeInsets.all(10.0),
         actions: <Widget>[
 
@@ -173,7 +175,7 @@ _repository.authenticateUser(user).then((isNewUser) {
   }
   else{
      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-  return Normal();
+  return HomePage();
   },));
   }
 });

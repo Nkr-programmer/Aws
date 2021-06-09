@@ -6,6 +6,7 @@ import 'package:tenvotive/LoginScreen.dart';
 import 'package:tenvotive/database/profile.dart';
 import 'package:tenvotive/firebase_repository/HomeScreen.dart';
 import 'package:tenvotive/firebase_repository/repository.dart';
+import 'package:tenvotive/intro.dart';
 import 'package:tenvotive/mobile_auth/providers/countries.dart';
 import 'package:tenvotive/mobile_auth/providers/phone_auth.dart';
 
@@ -45,12 +46,12 @@ theme: ThemeData(brightness: Brightness.dark),
         builder:(context, AsyncSnapshot<FirebaseUser> snapshot) {  
           if(snapshot.hasData)
           {
-            return Normal();
+            return HomePage();
         //  return Profile();  
           }
           else
           {
-            return LoginScreen();
+            return Intro();
        //   return Profile();  
           }
 // when current user is clicked if null then loginscreen else homescreen
